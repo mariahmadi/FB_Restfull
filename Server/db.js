@@ -1,5 +1,5 @@
 const admin = require("firebase-admin")
-
+require('dotenv').config()
 const firebase = require("firebase/app");
 const {
     getAuth,
@@ -8,12 +8,12 @@ const {
 } = require("firebase/auth");
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCOK4Sq_OLq1DOaZg9KYjv_mWHf0nlFCc0",
-    authDomain: "newproject-380b9.firebaseapp.com",
-    projectId: "newproject-380b9",
-    storageBucket: "newproject-380b9.appspot.com",
-    messagingSenderId: "473550635423",
-    appId: "1:473550635423:web:3c4270cac3cb630427fdaa"
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.authDomain,
+    projectId: process.env.projectId,
+    storageBucket: process.env.storageBucket,
+    messagingSenderId: process.env.messagingSenderId,
+    appId: process.env.appId
 };
 firebase.initializeApp(firebaseConfig)
 var auth = getAuth()

@@ -33,16 +33,10 @@
             e.preventDefault()
             var username = document.getElementById("user").value
             var password = document.getElementById("pass").value
-            // const cookie = document.cookie
-            // const covalue = cookie.split(',').find((row) => row.startsWith('_csrf'))
-            //     ?.split(':')[1];
-            // const header = new Headers({
-            //     'XSRF-TOKEN': cookie
-            // })
+          
             const header1 = new Headers()
 
-            // header1.append("Access-Control-Allow-Headers", "Content-Type")
-            // header1.append("Access-Control-Allow-Methods", "POST", "GET")
+           
             header1.append("Access-Control-Allow-Credentials", 'true')
             header1.append("Access-Control-Allow-Origin", 'http://localhost:5000')
             header1.append('Content-Type', ' application/json');
@@ -62,7 +56,7 @@
 
 
     </script>
-<button onclick="add()">add</button>
+
 
 </body>
 

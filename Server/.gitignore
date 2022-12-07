@@ -1,3 +1,7 @@
 node_modules/
 newproject.json
 .env
+firebase.json
+.firebaserc
+firestore.indexes.json
+firestore.rules
