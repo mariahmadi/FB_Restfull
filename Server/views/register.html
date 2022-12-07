@@ -1,0 +1,69 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+
+<body>
+    <div> Somthing here </div>
+    <main>
+        <form id="formID" method="post">
+            <label for="username">username</label>
+            <input id="user" type="text" />
+            <label for="password">password</label>
+            <input id="pass" type="text" />
+            <button type="submit">ُSubmit</button>
+        </form>
+
+    </main>
+    <script src="../public/auth.js"> </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
+
+
+      
+       
+        const form = document.getElementById("formID")
+        form.addEventListener("submit", (e) => {
+            e.preventDefault()
+            var username = document.getElementById("user").value
+            var password = document.getElementById("pass").value
+            // const cookie = document.cookie
+            // const covalue = cookie.split(',').find((row) => row.startsWith('_csrf'))
+            //     ?.split(':')[1];
+            // const header = new Headers({
+            //     'XSRF-TOKEN': cookie
+            // })
+            const header1 = new Headers()
+
+            // header1.append("Access-Control-Allow-Headers", "Content-Type")
+            // header1.append("Access-Control-Allow-Methods", "POST", "GET")
+            header1.append("Access-Control-Allow-Credentials", 'true')
+            header1.append("Access-Control-Allow-Origin", 'http://localhost:5000')
+            header1.append('Content-Type', ' application/json');
+            header1.append("Access-Control-Allow-Headers", "Content-Type")
+
+            fetch("http://localhost:5000/users", {
+                method: "POST",
+                mode: "cors",
+                credentials: "include",
+                body: JSON.stringify({ username: username, password: password }),
+                headers: header1
+
+            }).then(res => {
+                console.log(res)
+            })
+        })
+
+
+    </script>
+<button onclick="add()">add</button>
+
+</body>
+
+</html>
