@@ -5,9 +5,6 @@ const path = require("path")
 const csrf = require("csurf")
 const cookieparser = require("cookie-parser")
 const app = express()
-//const { initializeApp } = require("firebase/app")
-
-const { createUserWithEmailAndPassword } = require("firebase/auth")
 
 const { addUser, signIn } = require("./db")
 

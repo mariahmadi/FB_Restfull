@@ -5,6 +5,7 @@ const {
     getAuth,
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
+    browserLocalPersistence, setPersistence
 } = require("firebase/auth");
 
 const firebaseConfig = {
@@ -15,7 +16,7 @@ const firebaseConfig = {
     messagingSenderId: process.env.messagingSenderId,
     appId: process.env.appId
 };
-firebase.initializeApp(firebaseConfig)
+const app = firebase.initializeApp(firebaseConfig)
 var auth = getAuth()
 
 // const cred = require("./newproject.json")
@@ -26,8 +27,9 @@ var auth = getAuth()
 //const db = admin.firestore()
 //const AdminAuth = admin.auth()
 
-exports.addUser = (username, password) => {
-    createUserWithEmailAndPassword(auth, username, password)
+exports.addUser = async (username, password) => {
+  //  await setPersistence(auth, browserLocalPersistence)
+    await createUserWithEmailAndPassword(auth, username, password)
 }
 exports.signIn = (username, password) => {
     signInWithEmailAndPassword(auth, username, password)

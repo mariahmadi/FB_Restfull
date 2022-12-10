@@ -21,33 +21,29 @@
     </main>
     <script src="../public/auth.js"> </script>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
-
-
-      
-       
+    <script>
         const form = document.getElementById("formID")
         form.addEventListener("submit", (e) => {
             e.preventDefault()
             var username = document.getElementById("user").value
             var password = document.getElementById("pass").value
-          
+
             const header1 = new Headers()
 
-           
+
             header1.append("Access-Control-Allow-Credentials", 'true')
             header1.append("Access-Control-Allow-Origin", 'http://localhost:5000')
             header1.append('Content-Type', ' application/json');
             header1.append("Access-Control-Allow-Headers", "Content-Type")
 
-            fetch("http://localhost:5000/users", {
+            fetch("http://127.0.0.1:5000/users", {
                 method: "POST",
                 mode: "cors",
                 credentials: "include",
                 body: JSON.stringify({ username: username, password: password }),
-                headers: header1
+                headers: {
+                    "Content-Type": "application/json"
+                }
 
             }).then(res => {
                 console.log(res)
